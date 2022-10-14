@@ -6,7 +6,6 @@ import java.util.Scanner;
  * You will need to complete the code as indicated below. The file
  * Turtle.java must be located in the same directory as Tictac.java.
  */
-
 public class TicTacToe {
 
     /*
@@ -14,20 +13,12 @@ public class TicTacToe {
     * arrays and would like to replace these variables with an array, you may do so.
     * Use 0 to represent an empty square, 1 to represent an X and 2 to represent an O.
     */
-    int[][] boardSquares = {
-    {topLeft, topMid ,topRight},
-    {midLeft, midMid, midRight},
-    {botLeft, botMid, botRight}
+    public static int[][] boardSquares = {
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0}
     };
-    private static int topLeft  = 0;
-    private static int topMid   = 0;
-    private static int topRight = 0;
-    private static int midLeft  = 0;
-    private static int midMid   = 0;
-    private static int midRight = 0;
-    private static int botLeft  = 0;
-    private static int botMid   = 0;
-    private static int botRight = 0;
+    public static int whoFirst = 0;
     //I feel like an Array would introduce complexity.... HOWEVER I like array's.
 
     // The Scanner is for reading in input from the keyboard
@@ -42,10 +33,21 @@ public class TicTacToe {
     * The method starts by calling by reading some input from the user 
     * and then calling drawBoard(). You will need to replace the code here and in
     * the drawBoard() method.
-    */
+    */ 
 
     public static void main(String[] args) {
-        //This is the first thing I have ever written in Java. I am not joking.
+        drawBoard();
+        whoisgoingFirst();
+        userPlay();
+        drawO(); 
+    }
+
+    public static void whoisgoingFirst(){
+        System.out.print("Who is going first 1 for you 0 for machine: ");
+        whoFirst = keyboardReader.nextInt();
+    }
+
+    public static void askforPlay(){
         System.out.print("Please input desired square as a value of 1-9: "); //ask end user for desired square as a value of 1-9
         int userSquare = keyboardReader.nextInt(); //takes integer input
         System.out.println("Selected Square: " + userSquare + " is this your desired Square? Type 1 for yes and 0 for no."); //tells the user what they entered
@@ -57,8 +59,21 @@ public class TicTacToe {
         } 
         if (yoRn == 1) {
             System.out.println("Playing square " + userSquare);
+            bob.up();
+            bob.setPosition(userSquare / 3, userSquare % 3);
+            drawXorO();
         }
-        drawBoard();
+     
+    }
+
+    private static void userPlay(){
+        //This is the first thing I have ever written in Java. I am not joking.
+        if(whoFirst == 1){
+            askforPlay();
+        } 
+        if (whoFirst == 0){
+
+        }
     }
 
     /** 
@@ -70,7 +85,7 @@ public class TicTacToe {
 
     private static void drawSquare(){
         for (int i = 1; i < 5; i++) {
-            bob.forward(50);
+            bob.forward(150);
             bob.left(90);
         }
     }
@@ -81,24 +96,24 @@ public class TicTacToe {
             drawSquare();
             bob.right(90);
             drawSquare();
-            bob.forward(50);
+            bob.forward(150);
             drawSquare();
             bob.right(90);
             drawSquare();
             bob.right(90);
             drawSquare();
-            bob.forward(50);
+            bob.forward(150);
             drawSquare();
-            bob.forward(50);
+            bob.forward(150);
             bob.left(90);
-            bob.forward(50);
+            bob.forward(150);
             drawSquare();
             bob.left(90);
-            bob.forward(50);
+            bob.forward(150);
             bob.right(90);
             drawSquare();
             bob.left(90);
-            bob.forward(50);
+            bob.forward(150);
             bob.right(90);
             drawSquare();
 
@@ -114,8 +129,12 @@ public class TicTacToe {
     * @param xCoord     the x-coordinate specifying the center of the X or O.
     * @param yCoord     the y-coordinate specifying the center of the X or O.
     */
-    private static void drawXorO(int markToDraw, double xCoord, double yCoord) {
-        // TODO: write this method!
+    private static void drawXorO() {
+        if (whoFirst == 1){
+                drawX();
+            } else {
+                drawO();
+            }
     }
 
     /** 
@@ -124,10 +143,19 @@ public class TicTacToe {
     * @param x_coord the x-coordinate specifying the center of the O.
     * @param y_coord the y-coordinate specifying the center of the O.
     */
-    private static void drawO(double x_coord, double y_coord) {
-        // TODO: write this method!
+    private static void drawO() {
+        bob.up();
+        bob.face(0, 0);
+        bob.forward(5);
+        bob.down();
+        for (int i = 1; i < 360; i++){
+            bob.forward(1);
+            bob.left(1);
+        }
     }
+    private static void drawX() {
 
+    }
     /**
      * This function allows a player to play through a turn. It should ask the player
      * where they would like to place their mark and allow the player to enter a number
