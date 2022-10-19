@@ -19,6 +19,15 @@ public class TicTacToe {
     {0, 0, 0}
     };
     public static int whoFirst = 0;
+    public static int userSquare = 0;
+    public static int xfPos = (-225);
+    public static int yfPos = (75);
+    public static int xsPos = (-75);
+    public static int ysPos = (-75);
+    public static int xtPos  = (75);
+    public static int ytPos = (-225);
+    public static int win = 0;
+
     //I feel like an Array would introduce complexity.... HOWEVER I like array's.
 
     // The Scanner is for reading in input from the keyboard
@@ -38,8 +47,9 @@ public class TicTacToe {
     public static void main(String[] args) {
         drawBoard();
         whoisgoingFirst();
-        userPlay();
-        drawO(); 
+        for (int i = 1; i < 10; i++){
+            userPlay();
+        }
     }
 
     public static void whoisgoingFirst(){
@@ -49,21 +59,152 @@ public class TicTacToe {
 
     public static void askforPlay(){
         System.out.print("Please input desired square as a value of 1-9: "); //ask end user for desired square as a value of 1-9
-        int userSquare = keyboardReader.nextInt(); //takes integer input
+        userSquare = keyboardReader.nextInt(); //takes integer input
         System.out.println("Selected Square: " + userSquare + " is this your desired Square? Type 1 for yes and 0 for no."); //tells the user what they entered
         int yoRn = keyboardReader.nextInt();
         if (yoRn == 0){
         System.out.print("Please input desired square as a value of 1-9: "); //ask end user for desired square as a value of 1-9
         int squareSquare = keyboardReader.nextInt(); //takes integer input
         System.out.println("Playing square " + squareSquare);
+        bob.up();
+        squareCalc();
+        boardSquares[(squareSquare - 1) / 3][(squareSquare - 1) % 3] = 1;
         } 
         if (yoRn == 1) {
             System.out.println("Playing square " + userSquare);
             bob.up();
-            bob.setPosition(userSquare / 3, userSquare % 3);
-            drawXorO();
+            squareCalc();
+            boardSquares[(userSquare - 1) / 3][(userSquare - 1) % 3] = 1;
         }
      
+    }
+
+    public static void squareCalc(){
+       if (userSquare == 1){
+        bob.setPosition(xfPos, yfPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 2){
+        bob.setPosition(xsPos, yfPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 3){
+        bob.setPosition(xtPos, yfPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 4){
+        bob.setPosition(xfPos, ysPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.forward(50);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 5){
+        bob.setPosition(xsPos, ysPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 6){
+        bob.setPosition(xtPos, ysPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 7){
+        bob.setPosition(xfPos, ytPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 8){
+        bob.setPosition(xsPos, ytPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+       if (userSquare == 9){
+        bob.setPosition(xtPos, ytPos);
+        if (whoFirst == 1){
+            bob.down();
+            drawX();
+        }
+        if (whoFirst == 0){
+            bob.right(90);
+            bob.forward(50);
+            bob.left(90);
+            bob.down();
+            drawO();
+        }
+       }
+
     }
 
     private static void userPlay(){
@@ -129,13 +270,6 @@ public class TicTacToe {
     * @param xCoord     the x-coordinate specifying the center of the X or O.
     * @param yCoord     the y-coordinate specifying the center of the X or O.
     */
-    private static void drawXorO() {
-        if (whoFirst == 1){
-                drawX();
-            } else {
-                drawO();
-            }
-    }
 
     /** 
     * This function should draw an O centered at the specified point. 
@@ -144,17 +278,24 @@ public class TicTacToe {
     * @param y_coord the y-coordinate specifying the center of the O.
     */
     private static void drawO() {
-        bob.up();
-        bob.face(0, 0);
-        bob.forward(5);
         bob.down();
         for (int i = 1; i < 360; i++){
             bob.forward(1);
             bob.left(1);
         }
+        bob.up();
     }
     private static void drawX() {
-
+        bob.setDirection(270);
+        bob.right(45);
+        bob.forward(50);
+        bob.backward(100);
+        bob.forward(50);
+        bob.left(90);
+        bob.forward(50);
+        bob.backward(100);
+        bob.right(45);
+        bob.up();
     }
     /**
      * This function allows a player to play through a turn. It should ask the player
@@ -183,9 +324,35 @@ public class TicTacToe {
      * @return If there are 3 Xs/Os in a line somewhere on the board return true.
      *         Otherwise, return false.
      */
-    private boolean find3InARow(int markToFind) {
-        // TODO: write this method!
-        return false;
+    private void find3InARowuser() {
+        if (boardSquares[0][0] == 1){
+            if (boardSquares[0][1] == 1){
+                if (boardSquares[0][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[1][0] == 1){
+            if (boardSquares[1][1] == 1){
+                if (boardSquares[1][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[2][0] == 1){
+            if (boardSquares[2][1] == 1){
+                if (boardSquares[2][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 1){
+            if (boardSquares[1][1] == 1){
+                if (boardSquares[2][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
     }
 
     /**
