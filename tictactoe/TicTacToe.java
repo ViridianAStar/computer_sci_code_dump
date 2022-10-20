@@ -27,6 +27,8 @@ public class TicTacToe {
     public static int xtPos  = (75);
     public static int ytPos = (-225);
     public static int win = 0;
+    public static int gameOver = 0;
+    public static int userhasPlayed = 0;
 
     //I feel like an Array would introduce complexity.... HOWEVER I like array's.
 
@@ -47,8 +49,17 @@ public class TicTacToe {
     public static void main(String[] args) {
         drawBoard();
         whoisgoingFirst();
-        for (int i = 1; i < 10; i++){
-            userPlay();
+        while (gameOver == 0){
+            if (whoFirst == 1){
+                userPlay();
+                aiPlay();
+                isGameOver();
+            }
+            if (whoFirst == 0){
+                aiPlay();
+                userPlay();
+                isGameOver();
+            }
         }
     }
 
@@ -57,29 +68,17 @@ public class TicTacToe {
         whoFirst = keyboardReader.nextInt();
     }
 
-    public static void askforPlay(){
+    public static void userPlay(){
         System.out.print("Please input desired square as a value of 1-9: "); //ask end user for desired square as a value of 1-9
         userSquare = keyboardReader.nextInt(); //takes integer input
-        System.out.println("Selected Square: " + userSquare + " is this your desired Square? Type 1 for yes and 0 for no."); //tells the user what they entered
-        int yoRn = keyboardReader.nextInt();
-        if (yoRn == 0){
-        System.out.print("Please input desired square as a value of 1-9: "); //ask end user for desired square as a value of 1-9
-        int squareSquare = keyboardReader.nextInt(); //takes integer input
-        System.out.println("Playing square " + squareSquare);
-        bob.up();
-        squareCalc();
-        boardSquares[(squareSquare - 1) / 3][(squareSquare - 1) % 3] = 1;
-        } 
-        if (yoRn == 1) {
             System.out.println("Playing square " + userSquare);
             bob.up();
-            squareCalc();
+            squareCalcuser();
             boardSquares[(userSquare - 1) / 3][(userSquare - 1) % 3] = 1;
-        }
-     
+            userhasPlayed = 1;
     }
 
-    public static void squareCalc(){
+    public static void squareCalcuser(){
        if (userSquare == 1){
         bob.setPosition(xfPos, yfPos);
         if (whoFirst == 1){
@@ -206,15 +205,20 @@ public class TicTacToe {
        }
 
     }
+    private static void aiPlay(){
+     if (whoFirst == 1) {
 
-    private static void userPlay(){
-        //This is the first thing I have ever written in Java. I am not joking.
-        if(whoFirst == 1){
-            askforPlay();
-        } 
-        if (whoFirst == 0){
-
+     }
+     if (whoFirst == 0) {
+        bob.up();
+        bob.setPosition(xfPos, yfPos);
+        bob.down();
+        drawX();
+        if (userhasPlayed == 1){
+            playTurn();
+            userhasPlayed = 0;
         }
+     }
     }
 
     /** 
@@ -310,7 +314,7 @@ public class TicTacToe {
      * @param markToDraw represents which mark to draw: use a value of 1 to represent an
      * X and a value of 2 to represent an O.
      */
-    private void playTurn(int markToDraw) {
+    private static void playTurn() {
         // TODO: write this method!
     }
 
@@ -324,7 +328,7 @@ public class TicTacToe {
      * @return If there are 3 Xs/Os in a line somewhere on the board return true.
      *         Otherwise, return false.
      */
-    private void find3InARowuser() {
+    private static void find3InARow() {
         if (boardSquares[0][0] == 1){
             if (boardSquares[0][1] == 1){
                 if (boardSquares[0][2] == 1) {
@@ -353,6 +357,104 @@ public class TicTacToe {
                 }
             }
         }
+        if (boardSquares[0][2] == 1){
+            if (boardSquares[1][1] == 1){
+                if (boardSquares[2][0] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 1){
+            if (boardSquares[1][1] == 1){
+                if (boardSquares[2][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 1){
+            if (boardSquares[1][0] == 1){
+                if (boardSquares[2][0] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][1] == 1){
+            if (boardSquares[1][1] == 1){
+                if (boardSquares[2][1] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][2] == 1){
+            if (boardSquares[1][2] == 1){
+                if (boardSquares[2][2] == 1) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 2){
+            if (boardSquares[0][1] == 2){
+                if (boardSquares[0][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[1][0] == 2){
+            if (boardSquares[1][1] == 2){
+                if (boardSquares[1][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[2][0] == 2){
+            if (boardSquares[2][1] == 2){
+                if (boardSquares[2][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 2){
+            if (boardSquares[1][1] == 2){
+                if (boardSquares[2][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][2] == 2){
+            if (boardSquares[1][1] == 2){
+                if (boardSquares[2][0] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 2){
+            if (boardSquares[1][1] == 2){
+                if (boardSquares[2][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][0] == 2){
+            if (boardSquares[1][0] == 2){
+                if (boardSquares[2][0] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][1] == 2){
+            if (boardSquares[1][1] == 2){
+                if (boardSquares[2][1] == 2) {
+                    win = 1;
+                }
+            }
+        }
+        if (boardSquares[0][2] == 2){
+            if (boardSquares[1][2] == 2){
+                if (boardSquares[2][2] == 2) {
+                    win = 1;
+                }
+            }
+        }
     }
 
     /**
@@ -364,8 +466,19 @@ public class TicTacToe {
      *         If player 2 (Os) has won, return 2
      *         If the game ends in a draw, return -1.
      */
-    private int isGameOver() {
-        // TODO: write this method!
-        return 0;
+    private static void isGameOver() {
+        find3InARow();
+        if (win == 1){
+            System.out.print("User Wins!");
+            gameOver = 1;
+        } else {
+            gameOver = 0;
+        }
+        if (win == 2){
+            System.out.print("Computer Wins!");
+            gameOver = 1;
+        } else {
+            gameOver = 0;
+        }
     }
 }
