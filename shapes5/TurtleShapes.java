@@ -9,47 +9,38 @@ public class TurtleShapes {
     public static int deterministc = 0;
 
     public static void main(String[] args) {
-        exit = false;
-        bonk = false;
-        while (exit == false && bonk == false){
-            System.out.println("Please select function between 1 and 13");
-            deterministc = kbR.nextInt();
-            if (deterministc == 1){
-                System.out.println("Please input initial sidelength: ");
-                sL = kbR.nextInt();
-                System.out.println("Please input number of squares: ");
-                int sN = kbR.nextInt();
-                nestedSquares(sN);
-                bonk = true;
-            }
-            if (deterministc == 2){
-                System.out.println("Please input a side length: ");
-                sL = kbR.nextInt();
-                triangle(sL);   
-                bonk = true;     
-            }
-            if (deterministc == 3){
-                System.out.println("Please input a side length: ");
-                sL = kbR.nextInt();
-                bob.right(180);
-                triangle(sL);
-                triforce();
-                bonk = true;
-            }
-            if (deterministc == 4){
-                System.out.println("Please input a side length");
-                sL = kbR.nextInt();
-                rectangle(sL);
-                bonk = true;
-            }
-            if (deterministc == 5){
-                System.out.println("Please input a radius");
-                sL = kbR.nextInt();
-                circle(sL);
-                bonk = true;
-            }
 
-        }
+                System.out.println("Please input a side length: ");
+                sL = kbR.nextInt();
+                star(sL);
+    }
+
+    public static void bananas(){
+        System.out.println("Please input initial sidelength: ");
+        sL = kbR.nextInt();
+        System.out.println("Please input number of squares: ");
+        int sN = kbR.nextInt();
+        nestedSquares(sN);
+
+        System.out.println("Please input a side length: ");
+        sL = kbR.nextInt();
+        triangle(sL);   
+
+        
+        System.out.println("Please input a side length");
+        sL = kbR.nextInt();
+        rectangle(sL);
+
+        System.out.println("Please input a radius");
+        sL = kbR.nextInt();
+        circle(sL);
+
+        System.out.println("Please input a side length: ");
+        sL = kbR.nextInt();
+        bob.right(180);
+        triangle(sL);
+        triforce();
+
     }
 
     /**
@@ -74,6 +65,10 @@ public class TurtleShapes {
         bob.down();
         square(sL + multi);
         multi = multi + 20;
+        bob.up();
+        bob.left(135);
+        bob.forward(sL/2);
+        bob.right(135);
        }
        bonk = false;
     }
@@ -163,8 +158,12 @@ public class TurtleShapes {
     /**
      * Draws a 5-point star
      */
-    public static void star() {
-        // implement this method!
+    public static void star(int lineLength) {
+
+        for (int i = 0; i<5; i++){
+            bob.forward(lineLength);
+            bob.right(140);
+        }
     }
 
     /**
