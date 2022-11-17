@@ -8,3 +8,6 @@ centripetal acceleration = v^2/r
 v=2(pi)r/T 
 
 T=period
+
+
+Critical Velocity = sqrt[rg]
