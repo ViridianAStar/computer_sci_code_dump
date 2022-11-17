@@ -7,49 +7,14 @@ public class TurtleShapes {
     public static boolean exit;
     public static boolean bonk;
     public static int deterministc = 0;
+    public static double pi = 3.1415926;
 
     public static void main(String[] args) {
-        exit = false;
-        bonk = false;
-        while (exit == false && bonk == false){
-            System.out.println("Please select function between 1 and 13");
-            deterministc = kbR.nextInt();
-            if (deterministc == 1){
-                System.out.println("Please input initial sidelength: ");
-                sL = kbR.nextInt();
-                System.out.println("Please input number of squares: ");
-                int sN = kbR.nextInt();
-                nestedSquares(sN);
-                bonk = true;
-            }
-            if (deterministc == 2){
-                System.out.println("Please input a side length: ");
-                sL = kbR.nextInt();
-                triangle(sL);   
-                bonk = true;     
-            }
-            if (deterministc == 3){
-                System.out.println("Please input a side length: ");
-                sL = kbR.nextInt();
-                bob.right(180);
-                triangle(sL);
-                triforce();
-                bonk = true;
-            }
-            if (deterministc == 4){
-                System.out.println("Please input a side length");
-                sL = kbR.nextInt();
-                rectangle(sL);
-                bonk = true;
-            }
-            if (deterministc == 5){
-                System.out.println("Please input a radius");
-                sL = kbR.nextInt();
-                circle(sL);
-                bonk = true;
-            }
-
-        }
+        System.out.println("Please input a length");
+        sL = kbR.nextInt();
+        System.out.println("Please input iterations");
+        int iter = kbR.nextInt();
+        spiral(iter, sL);
     }
 
     /**
@@ -139,7 +104,7 @@ public class TurtleShapes {
         bob.right(90);
         for (int i = 1; i < 361; i++){
             bob.down();
-            bob.forward((2 * 3.1415926) * r);
+            bob.forward((2 * pi) * r);
             bob.right(1);
             bob.up();
         }
@@ -149,8 +114,16 @@ public class TurtleShapes {
     /**
      * Draws a spiral at the current position.
      */
-    public static void spiral() {
-        // implement this method! Hint: you will need to create a variable.
+    public static void spiral(int iterations,  int isL) {
+        bob.up();
+        int deg = 1;
+        for (int i = 0; i <= iterations; i++){
+            bob.down();
+            bob.forward(isL);
+            bob.left(deg);
+            isL = isL * 2;
+            deg = deg + 1;
+        }
     }
 
     /**
