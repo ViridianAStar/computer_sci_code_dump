@@ -1,0 +1,7 @@
+1) Draw a free body diagram. sn{
+    friction acts towards center meaning it can also be centripetal force.
+} 
+ss 1.1{
+    set axis.
+}
+2)

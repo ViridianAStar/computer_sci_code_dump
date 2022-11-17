@@ -1,0 +1,10 @@
+Force of friction = mv^2/r
+
+derive (mu)mg=mv^2/r
+v=sqrt[(mu)gr]
+
+centripetal acceleration = v^2/r
+
+v=2(pi)r/T 
+
+T=period
