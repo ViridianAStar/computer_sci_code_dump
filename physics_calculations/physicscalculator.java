@@ -4,7 +4,7 @@ import java.math.*;
 public class physicscalculator{
 
     public static void main(String[] args){
-        
+       
     }
 
     private static double criticalVelocity(double radius, double gravity){

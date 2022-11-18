@@ -11,3 +11,22 @@ T=period
 
 
 Critical Velocity = sqrt[rg]
+
+erounious equation for net center {
+
+    Fsubc = mass * acceleration sub can
+
+    derive 1 Fsubn - Fsubg = (mass * velocity^2)/radius
+    derive 2 Fubsn= Fsubg + (mass*velocity^2)/radius
+
+}
+
+velocity minimum {
+
+}
+
+frequency{
+
+}
+
+mu (coeffcient friction)= (radius * gravity)/velocity squared
