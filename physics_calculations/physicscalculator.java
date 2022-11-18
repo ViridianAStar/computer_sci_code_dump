@@ -19,4 +19,20 @@ public class physicscalculator{
         return centripAccel;
     }
 
+    private static double speedoverTime1(double radius, double T){
+        double velocity;
+        velocity = ((2*(Math.PI))*radius)/T;
+        return(velocity);
+    }
+
+    private static double velocityusingMU(double mu, double gravity, double radius){
+        double velocity = Math.sqrt((mu) * (gravity * radius));
+        return velocity;
+    }
+
+    private static double derivedFriction(double velocitysqrd, double mass, double radius){
+        double Ff = (mass * velocitysqrd)/radius;
+        return Ff;
+    }
+
 }
