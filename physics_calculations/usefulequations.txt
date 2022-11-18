@@ -30,3 +30,7 @@ frequency{
 }
 
 mu (coeffcient friction)= (radius * gravity)/velocity squared
+
+banking angle equation {
+    tan(theta) = (velocity squared)/(radius * gravity)
+}

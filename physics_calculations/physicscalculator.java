@@ -35,4 +35,19 @@ public class physicscalculator{
         return Ff;
     }
 
+    private static double coefficientofFriction(double radius, double gravity, double velocitysqrd){
+        double mu = (velocitysqrd)/(gravity * radius);
+        return mu;
+    }   
+
+    private static double eefnetcenter(double ForceofG, double mass, double velocitysqrd, double radius){
+        double netFsubn = ForceofG + ((mass * velocitysqrd)/radius);
+        return netFsubn;
+    }
+
+    private static double bankingangle(double velocitysqrd, double radius, double gravity){
+        double tannumSimple = velocitysqrd/(radius * gravity);
+        return tannumSimple;
+    }
+
 }
