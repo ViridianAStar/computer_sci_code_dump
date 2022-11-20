@@ -1,10 +1,43 @@
 import java.math.*;
-
+import java.util.Scanner;
 
 public class physicscalculator{
-
+    private static Scanner kbR = new Scanner(System.in);
+    private static int selection;
+    private static String[]   operationSelection = {"Critical Velocity", "Centripetal Acceleration", "Speed Over Time 1", "Velocity using Mu", "Derivied Friction", "Coefficient of Friction", "Eq for Net Center", "Banking Angle"};
     public static void main(String[] args){
-       
+        System.out.println("What operation would you like to perform?");
+        System.out.println("Critical Velocity   |   Centripetal Acceleration");
+        System.out.println("Speed Over Time 1   |   Velocity Using Mu");
+        System.out.println("Derivied Friction   |   Coefficient of Friction");
+        System.out.println("Eq for Net Center   |   Banking Angle");
+        System.out.print("Please type name of operation: ");
+        String selectionChoice = kbR.nextLine();
+        selection = selectionSearch(selectionChoice);
+        if (selection == -1){
+            System.out.println("Please check for typo.");
+            System.out.println("Critical Velocity   |   Centripetal Acceleration");
+            System.out.println("Speed Over Time 1   |   Velocity Using Mu");
+            System.out.println("Derivied Friction   |   Coefficient of Friction");
+            System.out.println("Eq for Net Center   |   Banking Angle");
+            System.out.print("Please type name of operation: ");
+            selectionChoice = kbR.nextLine();
+            selection = selectionSearch(selectionChoice);
+        }
+        System.out.println("You have selected operation " + operationSelection[selection] + ".");
+
+    }
+
+    private static int selectionSearch(String T){
+        int i = 0;
+        while (i < operationSelection.length){
+            if (operationSelection[i] == T){
+                return i;
+            }
+            i++;
+            
+        }
+        return -1;
     }
 
     private static double criticalVelocity(double radius, double gravity){
