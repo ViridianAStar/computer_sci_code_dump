@@ -31,7 +31,7 @@ public class physicscalculator{
     private static int selectionSearch(String T, String[] A){
         int i=0;
         while (i <= A.length){
-            if (A[i] == T){
+            if (A[i-1] == T){
                 return i;
             } else {
                 i++;
