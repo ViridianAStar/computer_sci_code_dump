@@ -13,7 +13,7 @@ public class physicscalculator{
         System.out.println("Eq for Net Center   |   Banking Angle");
         System.out.print("Please type name of operation: ");
         String selectionChoice = kbR.nextLine();
-        selection = selectionSearch(selectionChoice);
+        selection = selectionSearch(selectionChoice, operationSelection);
         if (selection == -1){
             System.out.println("Please check for typo.");
             System.out.println("Critical Velocity   |   Centripetal Acceleration");
@@ -21,20 +21,21 @@ public class physicscalculator{
             System.out.println("Derivied Friction   |   Coefficient of Friction");
             System.out.println("Eq for Net Center   |   Banking Angle");
             System.out.print("Please type name of operation: ");
-            selectionChoice = kbR.nextLine();
-            selection = selectionSearch(selectionChoice);
+            selectionChoice = kbR.next();
+            selection = selectionSearch(selectionChoice, operationSelection);
         }
         System.out.println("You have selected operation " + operationSelection[selection] + ".");
 
     }
 
-    private static int selectionSearch(String T){
-        int i = 0;
-        while (i < operationSelection.length){
-            if (operationSelection[i] == T){
+    private static int selectionSearch(String T, String[] A){
+        int i=0;
+        while (i <= A.length){
+            if (A[i] == T){
                 return i;
+            } else {
+                i++;
             }
-            i++;
             
         }
         return -1;
