@@ -1,5 +1,7 @@
 import java.math.*;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class physicscalculator{
     private static Scanner kbR = new Scanner(System.in);
@@ -13,7 +15,7 @@ public class physicscalculator{
         System.out.println("Eq for Net Center   |   Banking Angle");
         System.out.print("Please type name of operation: ");
         String selectionChoice = kbR.nextLine();
-        selection = selectionSearch(selectionChoice, operationSelection);
+        selection = Arrays.asList(operationSelection).indexOf(selectionChoice);
         if (selection == -1){
             System.out.println("Please check for typo.");
             System.out.println("Critical Velocity   |   Centripetal Acceleration");
@@ -21,24 +23,12 @@ public class physicscalculator{
             System.out.println("Derivied Friction   |   Coefficient of Friction");
             System.out.println("Eq for Net Center   |   Banking Angle");
             System.out.print("Please type name of operation: ");
-            selectionChoice = kbR.next();
-            selection = selectionSearch(selectionChoice, operationSelection);
+            selectionChoice = kbR.nextLine();
+            selection = Arrays.asList(operationSelection).indexOf(selectionChoice);
         }
-        System.out.println("You have selected operation " + operationSelection[selection] + ".");
+        if (selection == 0){
 
-    }
-
-    private static int selectionSearch(String T, String[] A){
-        int i=0;
-        while (i <= A.length){
-            if (A[i-1] == T){
-                return i;
-            } else {
-                i++;
-            }
-            
         }
-        return -1;
     }
 
     private static double criticalVelocity(double radius, double gravity){
