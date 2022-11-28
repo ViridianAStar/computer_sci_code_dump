@@ -34,3 +34,13 @@ mu (coeffcient friction)= (radius * gravity)/velocity squared
 banking angle equation {
     tan(theta) = (velocity squared)/(radius * gravity)
 }
+
+for current lab Mg=([Msubs]*4[pi^2]*r)/T^2
+
+
+1/T^2 = Y
+Mg = x
+
+in y = mx + b format
+
+1/T^2=(1/([Msubs]*4[pi^2]*r))Mg print_(")

@@ -16,7 +16,7 @@ public class physicscalculator{
         System.out.print("Please type name of operation: ");
         String selectionChoice = kbR.nextLine();
         selection = Arrays.asList(operationSelection).indexOf(selectionChoice);
-        if (selection == -1){
+        while (selection == -1){
             System.out.println("Please check for typo.");
             System.out.println("Critical Velocity   |   Centripetal Acceleration");
             System.out.println("Speed Over Time 1   |   Velocity Using Mu");
