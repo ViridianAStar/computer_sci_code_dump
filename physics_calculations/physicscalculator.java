@@ -27,7 +27,7 @@ public class physicscalculator{
             selection = Arrays.asList(operationSelection).indexOf(selectionChoice);
         }
         if (selection == 0){
-
+            
         }
     }
 
