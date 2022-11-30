@@ -27,6 +27,10 @@ public class physicscalculator{
             selection = Arrays.asList(operationSelection).indexOf(selectionChoice);
         }
         if (selection == 0){
+            System.out.println("You have selcted Critical Velocity");
+            System.out.print("Please input radius: ");
+            int iO = kbR.nextInt();
+            System.out.print("Please input gravity value: ");
             
         }
     }
