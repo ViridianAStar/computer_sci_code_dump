@@ -10,11 +10,46 @@ public class TurtleShapes {
     public static double pi = 3.1415926;
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         System.out.println("Please input a length");
         sL = kbR.nextInt();
         System.out.println("Please input iterations");
         int iter = kbR.nextInt();
         spiral(iter, sL);
+=======
+
+                System.out.println("Please input a side length: ");
+                sL = kbR.nextInt();
+                star(sL);
+    }
+
+    public static void bananas(){
+        System.out.println("Please input initial sidelength: ");
+        sL = kbR.nextInt();
+        System.out.println("Please input number of squares: ");
+        int sN = kbR.nextInt();
+        nestedSquares(sN);
+
+        System.out.println("Please input a side length: ");
+        sL = kbR.nextInt();
+        triangle(sL);   
+
+        
+        System.out.println("Please input a side length");
+        sL = kbR.nextInt();
+        rectangle(sL);
+
+        System.out.println("Please input a radius");
+        sL = kbR.nextInt();
+        circle(sL);
+
+        System.out.println("Please input a side length: ");
+        sL = kbR.nextInt();
+        bob.right(180);
+        triangle(sL);
+        triforce();
+
+>>>>>>> b8e9f03b09afce22905139cd3989467e8a85b3ca
     }
 
     /**
@@ -39,6 +74,10 @@ public class TurtleShapes {
         bob.down();
         square(sL + multi);
         multi = multi + 20;
+        bob.up();
+        bob.left(135);
+        bob.forward(sL/2);
+        bob.right(135);
        }
        bonk = false;
     }
@@ -136,8 +175,12 @@ public class TurtleShapes {
     /**
      * Draws a 5-point star
      */
-    public static void star() {
-        // implement this method!
+    public static void star(int lineLength) {
+
+        for (int i = 0; i<5; i++){
+            bob.forward(lineLength);
+            bob.right(140);
+        }
     }
 
     /**
