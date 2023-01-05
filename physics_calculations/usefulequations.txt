@@ -1,0 +1,46 @@
+Force of friction = mv^2/r
+
+derive (mu)mg=mv^2/r
+v=sqrt[(mu)gr]
+
+centripetal acceleration = v^2/r
+
+v=2(pi)r/T 
+
+T=period
+
+
+Critical Velocity = sqrt[rg]
+
+erounious equation for net center {
+
+    Fsubc = mass * acceleration sub can
+
+    derive 1 Fsubn - Fsubg = (mass * velocity^2)/radius
+    derive 2 Fubsn= Fsubg + (mass*velocity^2)/radius
+
+}
+
+velocity minimum {
+
+}
+
+frequency{
+
+}
+
+mu (coeffcient friction)= (radius * gravity)/velocity squared
+
+banking angle equation {
+    tan(theta) = (velocity squared)/(radius * gravity)
+}
+
+for current lab Mg=([Msubs]*4[pi^2]*r)/T^2
+
+
+1/T^2 = Y
+Mg = x
+
+in y = mx + b format
+
+1/T^2=(1/([Msubs]*4[pi^2]*r))Mg print_(")
